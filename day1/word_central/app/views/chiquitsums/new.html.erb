@@ -1,0 +1,17 @@
+<!-- app/views/chiquitums/new.html.erb -->
+
+<h1>Word Central</h1>
+
+<h2>Select Chiquitsums</h2>
+
+<form action="/chiquitsums" method="post">
+  <div>
+    <label for="chiquitums">Select Chiquitums Options</label><br>
+	<input type="radio" name="chiquitum[election]" value="paragraphs"> Paragraphs<br>
+	<input type="radio" name="chiquitum[election]" value="words"> Words<br>
+	<input type="number" name="chiquitum[quantity]" min="1">
+  </div>
+   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <button type="submit">Submit Selection</button>
+</form>

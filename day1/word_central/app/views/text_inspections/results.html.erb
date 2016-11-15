@@ -1,0 +1,10 @@
+<h1>Word count results</h1>
+
+<p><strong>Original text:</strong> <%= @text %></p>
+<p><strong>Amount of words:</strong> <%= @word_count %></p>
+<p><strong>Time to read the text:</strong> <%= @time_to_read.round(2) %> minutes</p>
+<h2>	top repeated words: </h2>
+
+<% @frecuency.each do |word, number| %>
+	<p><strong><%= word %></strong> with word frecuency: <%= number %></p>  
+<% end  %>
