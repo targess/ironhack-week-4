@@ -1,0 +1,14 @@
+<%= link_to 'New Contact', '/contacts/new' %>
+<h1>Address Box</h1>
+
+<form action="/contacts" method="GET">
+  Contacts Searcher:
+  <input type="search" name="search">
+</form>
+
+<h2>Contacts list</h2>
+<% @contacts.each do |contact| %>
+	<p><strong><%= contact.name %></strong>  at <%= contact.address %></p>
+	<%= link_to 'Show', contacts_show_path(contact) %>
+	<hr>	 
+<% end %>

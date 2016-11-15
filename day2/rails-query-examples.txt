@@ -1,0 +1,13 @@
+
+Project.where.not('name=?','Ironhack')
+Project.where('created_at > ?', 1.month.ago).order('name ASC')
+Project.where('created_at > ?', 1.month.ago.end_of_month).order('name ASC')
+
+Project.where('updated_at = ?', Date.yesterday)
+
+from = Time.midnight - 1.day
+to = Time.midnight
+Project.where(updated_at: from..to)
+
+Project.find_by_id('3')
+Project.find(3)
