@@ -1,0 +1,11 @@
+<h1>Auction Website</h1>
+
+<ul>
+	<% @my_products.each do |product| %>
+		<li>
+			<p><strong><%=  product.title %></strong> <%= product.deadline %></p> 
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to "Users", users_path %>

@@ -1,0 +1,14 @@
+<h1><%= @my_user.name %> - Products list</h1>
+
+<% @my_products.each do |product| %>
+	<ul>
+		<li>
+			<strong><%= product.title %></strong>
+			<%= product.deadline %>
+			<%= link_to 'Details', user_products_show_path(@my_user, product) %>
+		</li>
+	</ul>
+<% end %>
+
+<%= link_to 'User details', users_show_path(@my_user) %>
+<%= link_to 'New product', user_products_new_path(@my_user) %>

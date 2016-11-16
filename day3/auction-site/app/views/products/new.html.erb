@@ -1,0 +1,23 @@
+<h1>Add product for <%= @my_user.name %></h1>
+
+<% if @my_product.errors.any? %>
+	<ul>
+		<% @my_product.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+	
+<% end %>
+
+<%= form_for [@my_user, @my_product] do |f| %>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+
+		<%= f.label :description %>
+		<%= f.text_area :description %>
+		
+		<%= f.label :deadline %>
+		<%= f.datetime_field :deadline %>
+
+		<%= f.button %>
+<% end %>

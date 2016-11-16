@@ -2,4 +2,5 @@
 
 <p>Email: <%= @my_user.email %></p>
 
-<%= link_to 'Return to users list', '/users/' %>
+<%= link_to 'Return to users list', users_path %>
+<%= link_to 'Show products', user_products_path(@my_user) %>
