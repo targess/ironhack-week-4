@@ -1,0 +1,13 @@
+<h1>Users list</h1>
+
+<ul>
+	<% @my_users.each do |user| %>
+		<li>
+			<%= user.name %>
+			<%= link_to 'Show user info', users_show_path(user) %>
+			<%= link_to 'Delete', users_destroy_path(user), method: :post %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to "New user", users_new_path %>

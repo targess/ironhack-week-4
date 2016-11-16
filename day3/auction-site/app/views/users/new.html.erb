@@ -1,0 +1,20 @@
+<h1>Add new User</h1>
+
+<% if @my_user.errors.any? %>
+	<ul>
+		<% @my_user.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+	
+<% end %>
+
+<%= form_for(@my_user) do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+
+		<%= f.button %>
+<% end %>
