@@ -26,4 +26,12 @@ class ProductsController < ApplicationController
 			render "new"
 		end
 	end
+
+	def destroy
+		my_user = User.find_by_id(params[:user_id])
+		my_product = my_user.products.find_by_id(params[:id])
+		my_product.destroy
+
+		redirect_to user_products_path(my_user)
+	end
 end

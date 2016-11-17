@@ -5,10 +5,12 @@
 		<li>
 			<strong><%= product.title %></strong>
 			<%= product.deadline %>
-			<%= link_to 'Details', user_products_show_path(@my_user, product) %>
+			<%= link_to 'Details', user_product_path(@my_user, product) %>
+			<%= link_to 'Delete', user_product_path(@my_user, product), method: :delete %>
+
 		</li>
 	</ul>
 <% end %>
 
-<%= link_to 'User details', users_show_path(@my_user) %>
-<%= link_to 'New product', user_products_new_path(@my_user) %>
+<%= link_to 'User details', user_path(@my_user) %>
+<%= link_to 'New product', new_user_product_path(@my_user) %>
