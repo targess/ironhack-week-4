@@ -1,0 +1,29 @@
+<h1><%= @my_product.title %></h1>
+
+<p><%= @my_product.description %></p>
+<p><strong><%= @my_product.deadline %></strong></p>
+
+<h2>Previous bids</h2>
+<ul>
+	<% @bids.each do |bid| %>
+		<li>
+			<%= bid.amount %>
+			<span class="<%= 'winner' if bid.amount == @my_product.highest_bid.amount %>">
+				<%= bid.user.name %>			
+			</span>
+		</li>	
+	<% end %>
+</ul>
+
+<% unless @my_product.deadline_rearched? %>
+	<%= form_tag (product_bids_path(@my_product.id)) do %>
+		<%= label_tag :amount %>
+		<%= number_field_tag :amount %>
+
+		<%= label_tag :email %>
+		<%= text_field_tag :email %>
+		<%= button_tag %>
+	<% end %>	
+<% end %>
+
+<%= link_to 'Products list', '/' %>

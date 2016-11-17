@@ -4,8 +4,10 @@
 	<% @my_products.each do |product| %>
 		<li>
 			<p><strong><%=  product.title %></strong> <%= product.deadline %></p> 
+			<%= link_to 'Details', products_details_path(product.id)  %>
+
 		</li>
 	<% end %>
 </ul>
 
-<%= link_to "Users", users_path %>
+<%= link_to 'Users', users_path %>
