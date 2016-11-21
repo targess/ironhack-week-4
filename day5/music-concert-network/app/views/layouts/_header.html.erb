@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse">
+  <%= link_to "Music Concert Network", root_path, class: "navbar-brand" %>
+  <ul class="nav navbar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link" href="/concerts/new">New Concert <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/concerts/popular">Popular <span class="sr-only">(current)</span></a>
+    </li>
+  </ul>
+     <%= form_tag('/concerts/search', { class: "form-inline float-xs-right"}) do %>
+        <div class="input-group">
+
+  		  <%= text_field_tag :search, 'Search by price...', { class: "form-control" } %>
+          <span class="input-group-btn">
+  			<%= button_tag "Go!", {class: "btn btn-secondary"} %>
+  	  	  </span>
+  		</div>
+      <% end %>
+
+</nav>
+
+
+

@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-9">
+
+	    <section>
+	    	<div class="list-group">
+				<h2>Today</h2>
+	  			<% @my_concerts_today.each do |concert| %>
+			  		<a href=<%= concert_path(concert) %> class="list-group-item">
+			    	<h4 class="list-group-item-heading"><%= concert.artist %></h4>
+			    	<span class="label label-success">
+			    		<%= concert.price %>
+			    		<span class="glyphicon glyphicon-euro"></span>	
+			    	</span>
+			    	
+			    	<p><%= concert.description %></p>
+			    	<p><span class="badge"><%= concert.comments.count %></span> Comments</p>
+			  		</a>
+	  			<% end %>
+			</div>    	
+	    </section>
+	</div>
+	<div class="col-md-3">
+		<aside>
+			<h2>Next Month</h2>
+	    	<div class="list-group">
+	    		<% @my_concerts_this_month.each do |concert| %>
+					<a href=<%= concert_path(concert) %> class="list-group-item">
+			    	<h4 class="list-group-item-heading"><%= concert.artist %></h4>
+			    	<p class="list-group-item-text"><%= short_datetime(concert.date) %></p>
+			  		</a>
+			  	<% end %>
+			</div>			
+		</aside>
+    </div>
+</div>

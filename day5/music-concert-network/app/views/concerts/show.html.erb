@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="card">
+	  <div class="card-block">
+	    <h1 class="card-title">
+	    	<%= @my_concert.artist %>
+	    	<span class="label label-default"> <%= @my_concert.price %>
+				<span class="glyphicon glyphicon-euro"></span>
+			</span>
+	    </h1>
+	    <p class="card-text"><%= @my_concert.description %></p>
+
+		<dl class="dl-horizontal">
+		  <dt>Venue</dt>
+		  <dd><%= @my_concert.venue %></dd>
+		  <dd><%= @my_concert.city %></dd>
+		  <dt>Date</dt>
+		  <dd><%= @my_concert.date %></dd>
+		</dl>
+
+	  </div>
+	  <ul class="list-group list-group-flush">
+		<% @my_concert.comments.each do |comment| %>
+			<li class="list-group-item"><%= comment.description %></li>		
+		<% end %>
+	  </ul>
+	</div>
+</div>
