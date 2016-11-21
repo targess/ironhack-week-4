@@ -10,3 +10,9 @@ Rails basics
 **Day 2:**
 - Exemples - Querys
 - Final Exercise - Address Book
+
+**Day 3:**
+- Final Exercise - Auction Site
+
+**Day 5:**
+- Final Exercise - Music Concert Network
