@@ -1,0 +1,43 @@
+<div class="page-header">
+	<h1><%= @my_product.title %> <small><%= short_datetime(@my_product.deadline) %></small></h1>
+</div>
+<p><%= @my_product.description %></p>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title">Previous bids</h3>
+	</div>
+
+	<table class="table">
+    	<thead>
+    		<tr>
+    			<th>#</th>
+    			<th>Amount</th>
+    			<th>User</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<% @bids.each_with_index do |bid,index| %>
+    		<tr class="<%= 'success' if bid.amount == @my_product.highest_bid_amount %>">
+    			<th scope="row"><%= index %></th>
+    			<td><%= bid.amount %></td>
+    			<td><%= bid.user.name %></td>
+    		</tr>
+    		<% end %>
+    	</tbody>
+    </table>
+</div>
+
+<% unless @my_product.deadline_rearched? %>
+	<%= form_tag (product_bids_path(@my_product.id)), { class: 'form-inline' } do %>
+        <div class="form-group">
+            <%= label_tag :amount %>
+            <%= number_field_tag :amount, @my_product.highest_bid_amount+1, { class: 'form-control' } %>            
+        </div>
+        <div class="form-group">
+            <%= label_tag :email %>
+            <%= text_field_tag :email, "", { class: 'form-control' } %>            
+        </div>
+
+		<%= button_tag "Bid now!", {class: 'btn btn-success'}  %>
+	<% end %>	
+<% end %>

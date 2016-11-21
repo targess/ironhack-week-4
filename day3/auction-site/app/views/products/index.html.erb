@@ -1,16 +1,20 @@
-<h1><%= @my_user.name %> - Products list</h1>
-
-<% @my_products.each do |product| %>
-	<ul>
-		<li>
-			<strong><%= product.title %></strong>
-			<%= product.deadline %>
-			<%= link_to 'Details', user_product_path(@my_user, product) %>
-			<%= link_to 'Delete', user_product_path(@my_user, product), method: :delete %>
-
-		</li>
-	</ul>
-<% end %>
-
-<%= link_to 'User details', user_path(@my_user) %>
-<%= link_to 'New product', new_user_product_path(@my_user) %>
+<div class="row">
+	<div class="col-md-9">
+		<section>
+	    	<div class="list-group">
+				<h2>Products</h2>
+	  			<% @my_products.each do |product| %>
+			  		<a href=<%= products_details_path(product) %> class="list-group-item">
+			  		<h4>
+				    	<span class="label label-success datetime-margin">
+				    		<%= short_datetime(product.deadline) %>
+				    		<span class="glyphicon glyphicon-hourglass"></span>
+				    	</span>
+				    	<%= product.title %>
+			    	</h4>
+			  		</a>
+	  			<% end %>
+			</div>   
+		</section>
+	</div>
+</div>

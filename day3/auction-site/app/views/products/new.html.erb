@@ -1,4 +1,6 @@
-<h1>Add product for <%= @my_user.name %></h1>
+<div class="page-header">
+	<h1>Add product for <%= @my_user.name %></h1>	
+</div>
 
 <% if @my_product.errors.any? %>
 	<ul>
@@ -9,15 +11,26 @@
 	
 <% end %>
 
-<%= form_for [@my_user, @my_product] do |f| %>
-		<%= f.label :title %>
-		<%= f.text_field :title %>
-
-		<%= f.label :description %>
-		<%= f.text_area :description %>
-		
-		<%= f.label :deadline %>
-		<%= f.datetime_field :deadline %>
-
-		<%= f.button %>
-<% end %>
+<div class="row">
+	<div class="col-md-9">
+		<%= form_for [@my_user, @my_product] do |f| %>
+			<div class="form-group">
+				<%= f.label :title %>
+				<%= f.text_field :title, {class: "form-control"} %>
+			</div>
+			<div class="form-group">
+				<%= f.label :description %>
+				<%= f.text_area :description, {class: "form-control"} %>
+			</div>
+			<div class="form-group">
+				<%= f.label :min_bid %>
+				<%= f.number_field :min_bid, {class: "form-control"} %>
+			</div>
+			<div class="form-group">
+				<%= f.label :deadline %>
+				<%= f.datetime_field :deadline, {value: format_datetime_fields(1.days.from_now), class: "form-control"} %>
+			</div>
+				<%= f.button "Create", {class: "btn btn-success"} %>
+		<% end %>		
+	</div>
+</div>

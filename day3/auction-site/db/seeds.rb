@@ -12,19 +12,22 @@ chiquitum = ["Al ataquerl qué dise usteer ese pedazo de te voy a borrar el ceri
 	"Va usté muy cargadoo qué dise usteer no puedor se calle ustée benemeritaar está la cosa muy malar quietooor la caidita. Ahorarr qué dise usteer de la pradera apetecan está la cosa muy malar apetecan benemeritaar papaar papaar a gramenawer llevame al sircoo. A peich caballo blanco caballo negroorl no te digo trigo por no llamarte Rodrigor pecador torpedo fistro."
 	]
 
-users = User.create!([
-			{ name: 'Sahu', email: 'sahuquillo@valencia.es' },
-			{ name: 'Sergi', email: 'sergio@catalunia-independiente.es' },
-			{ name: 'Alvaro', email: 'alvaro@rojas.com' },
-			{ name: 'Carlos', email: 'react@esjavascript.es' },
-			{ name: 'Dani', email: 'soy@ingeniero.com' }])
+first_names = ['Sahu', 'Sergi', 'Alvaro', 'Carlos', 'Dani', 'Jony', 'Herve', 'Mariano', 'Juan Pablo', 'Miguel Angel']
 
-users.each do |user|
+products = ['Iphone','MacBook', 'Ipad', 'Microondas', 'Frigorífico', 'Mesa', 'Televisor', 'Bicicleta', 'Papelera', 'Libro', 'Ropa usada',
+	'Lámpara', 'Taza', 'Sofá', 'Espejo', 'Zapatos', 'Cafetera', 'Silla', 'Lote de libros', 'Mando a distancia' ]
+
+domain = ['gmail.com', 'hotmail.com', 'yahoo.es', 'terra.com']
+
+10.times do |i|
+	first_name = first_names[rand(first_names.size)]
+	user = User.create!({ name: first_name, email: first_name+"-#{i}@"+domain[rand(domain.length)] })
 
 	3.times do |i|
-		user.products.create!([
-			{ 	title: "#{user.name} product: #{i}", 
-				description: chiquitum[rand(chiquitum.length)],
-				deadline: rand(10.hours).seconds.from_now }])
-	end
+			user.products.create!([
+				{ 	title: products[rand(products.length)], 
+					description: chiquitum[rand(chiquitum.length)],
+					deadline: rand(10.hours).seconds.from_now,
+					min_bid: rand(10..50) }])
+		end	
 end

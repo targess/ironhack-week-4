@@ -8,7 +8,7 @@ class BidsController < ApplicationController
 		if my_user && (@my_bid.user_id = my_user.id) && @my_bid.save
 			redirect_to '/'
 		else
-			render "site/details"
+			render "products/details"
 		end
 	end
 end

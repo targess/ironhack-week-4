@@ -1,13 +1,26 @@
-<h1>Users list</h1>
+<div class="row">
+	<div class="col-md-9">
+		<section>
+			<div class="list-group">
+				<h1>
+					Users <span class="pull-right"><%= link_to "New User", new_user_path, {class: "btn btn-primary"} %></span>
+				</h1>
+				<ul class="list-group">
+					<% @my_users.each do |user| %>
+						<li class="list-group-item clearfix">
+						<span class="glyphicon glyphicon-user"></span>
+							<span><%= user.name %></span>
+							<span class="pull-right">
+								<%= link_to 'Show', user_path(user), {class: "btn btn-primary"} %>
+								<%= link_to 'Delete', { data: user_path(user), method: :delete}, {class: "btn btn-danger"} %>	
+							</span>
+														
+						</li>
+					<% end %>
+				</ul>
+			</div>
+			
+		</section>
+	</div>
+</div>
 
-<ul>
-	<% @my_users.each do |user| %>
-		<li>
-			<%= user.name %>
-			<%= link_to 'Show', user_path(user) %>
-			<%= link_to 'Delete', user_path(user), method: :delete %>
-		</li>
-	<% end %>
-</ul>
-
-<%= link_to "New user", new_user_path %>

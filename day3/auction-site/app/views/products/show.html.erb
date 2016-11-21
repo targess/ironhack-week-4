@@ -1,6 +1,5 @@
-<h1><%= @my_product.title %></h1>
-
-<p><%= @my_product.description %></p>
-<p><strong><%= @my_product.deadline %></strong></p>
-
-<%= link_to "Products list", user_products_path %>
+<div class="page-header">
+	<h1><%= @my_product.title %> <small><%= short_datetime(@my_product.deadline) %></small></h1>
+</div>
+<%= link_to "User profile", user_path(@my_user), {class: "btn btn-primary"} %>
+<p class="lead"><%= @my_product.description %></p>

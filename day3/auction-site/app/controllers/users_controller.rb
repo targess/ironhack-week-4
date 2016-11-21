@@ -6,6 +6,9 @@ class UsersController < ApplicationController
 
 	def show
 		@my_user = User.find_by_id(params[:id])
+		@my_products = @my_user.products
+		@my_bids = @my_user.bids
+		@my_wons = nil
 	end
 
 	def new

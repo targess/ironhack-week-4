@@ -1,6 +1,65 @@
-<h1><%= @my_user.name %></h1>
+<div class="page-header">
+	<h1><%= @my_user.name %> <small><%= @my_user.email %></small></h1>
+</div>
+<div class="nav">
+	<%= link_to 'New product', new_user_product_path(@my_user), {class: "btn btn-primary"} %>
+</div>
+<div class="row">
+	<div class="col-md-9">
+		<section>
+			<h2>My products</h2>
+			<div class="list-group">
+				<% @my_products.each do |product| %>
+			  		<span class="list-group-item clearfix">
+			  			<h4>
+					    	<span class="label label-success datetime-margin">
+					    		<%= short_datetime(product.deadline) %>
+					    		<span class="glyphicon glyphicon-hourglass"></span>
+					    	</span>
+				    		<span><%= product.title %></span>
+					    	<span class="pull-right">
+					    		<%= link_to 'Show', user_product_path(@my_user, product), {class: "btn btn-primary"}  %>
+								<%= link_to 'Delete', { data: user_product_path(@my_user, product), method: :delete}, 
+									{class: "btn btn-danger"}  %>
+				    		</span>
 
-<p>Email: <%= @my_user.email %></p>
+			    		</h4>
+			  		</span>
+				<% end %>
+			</div>
+		</section>
+		<section>
+			<h2>Won products</h2>
+			<div class="list-group">
+			<% @my_bids.each do |bid| %>
+				<% if bid.winner_bid? %>
+					<span class="list-group-item">
+						<h4>
+							<span><%= bid.product.title %></span>
+						</h4>
+					</span>
+				<% end %>
+			<% end %>
+				
+			</div>
+		</section>
+	</div>
+	<div class="col-md-3">
+		<aside>
+			<h2>Latest bids</h2>
+			<div class="list-group">
+				<% @my_bids.each do |bid| %>
+					
+					<span class="list-group-item">
+						<h5>
+							<%= bid.amount %>
+							<span><%= bid.product.title %></span>
+						</h5>	
+					</span>
+					
+				<% end %>
 
-<%= link_to 'Return to users list', users_path %>
-<%= link_to 'Show products', user_products_path(@my_user) %>
+			</div>
+		</aside>
+	</div>
+</div>
